@@ -1,7 +1,7 @@
 # Личный проект «Большое путешествие» [![Build status][travis-image]][travis-url]
 
 * Студент: [Павел Качуровский](https://up.htmlacademy.ru/ecmascript/12/user/1152113).
-* Наставник: `Неизвестно`.
+* Наставник: [Алексей Цветков](https://htmlacademy.ru/profile/id1542291).
 
 ---
 
