@@ -10,10 +10,6 @@ const tripViewControlsTitles = tripControlsContainer.querySelectorAll(`h2`);
 const tripMainElement = document.querySelector(`.page-body__page-main`);
 const tripEventsContainer = tripMainElement.querySelector(`.trip-events`);
 
-const render = (container, template, place) => {
-  container.insertAdjacentHTML(place, template);
-};
-
 const createMainInfoTamplate = () => {
   return (`
     <section class="trip-main__trip-info  trip-info">
@@ -155,6 +151,10 @@ const creatrTripDayEvent = () => {
       </div>
     </li>
   `);
+};
+
+const render = (container, template, place) => {
+  container.insertAdjacentHTML(place, template);
 };
 
 render(headerMainInfoContainer, createMainInfoTamplate(), `afterbegin`);
