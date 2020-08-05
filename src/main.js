@@ -4,9 +4,9 @@ import {createTripFilterControls} from "./view/filter-controls.js";
 import {createTripEventsSortControls} from "./view/sort-controls.js";
 import {createTripDaysContainer} from "./view/days-container.js";
 import {createTripDayItem} from "./view/day-item.js";
-import {creatrTripDayEvent} from "./view/day-event.js";
-
-const EVENTS_COUNT = 3;
+import {createTripDayEvent} from "./view/day-event.js";
+import {getTripPoint} from "./mock/generate-trip-point.js";
+import {getEventEditForm} from "./view/event-edit";
 
 const pageHeaderElement = document.querySelector(`.page-header`);
 const headerMainInfoContainer = pageHeaderElement.querySelector(`.trip-main`);
@@ -19,6 +19,8 @@ const tripEventsContainer = tripMainElement.querySelector(`.trip-events`);
 const render = (container, template, place) => {
   container.insertAdjacentHTML(place, template);
 };
+
+const loadData = getTripPoint(5);
 
 render(headerMainInfoContainer, createMainInfoTamplate(), `afterbegin`);
 render(tripViewControlsTitles[0], createTripViewControls(), `afterend`);
@@ -33,6 +35,10 @@ render(tripDaysContainer, createTripDayItem(), `beforeend`);
 
 const tripEventsList = tripDaysContainer.querySelector(`.trip-events__list`);
 
-for (let i = 0; i < EVENTS_COUNT; i++) {
-  render(tripEventsList, creatrTripDayEvent(), `beforeend`);
+for (let i = 0; i < loadData.length; i++) {
+  render(tripEventsList, createTripDayEvent(loadData[i]), `beforeend`);
+  if (i === 0) {
+    render(tripEventsList, getEventEditForm(loadData[i]), `beforeend`);
+  }
 }
+
