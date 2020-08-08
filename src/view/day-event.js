@@ -1,18 +1,11 @@
 import {getTimeString} from "../utils/time-string.js";
 
 const getOfferList = (offers) => {
-  let offersList = ``;
-
-  for (const offer of offers) {
-    offersList += `<li class="event__offer">
-    <span class="event__offer-title">${offer.name}</span>
-    &plus;
-    &euro;&nbsp;<span class="event__offer-price">${offer.price}</span>
-  </li>
-  `;
-  }
-
-  return offersList;
+  return Array.from(offers).map((offer) => `<li class="event__offer">
+  <span class="event__offer-title">${offer.name}</span>
+  &plus;
+  &euro;&nbsp;<span class="event__offer-price">${offer.price}</span>
+  </li>`).join(``);
 };
 
 export const createTripDayEvent = (tripPoint) => {
