@@ -51,3 +51,9 @@ export const POINT_OFFERS = [
     price: 30
   }
 ];
+
+export const RENDER_POSITION = {
+  AFTERBEGIN: `afterbegin`,
+  AFTEREND: `afterend`,
+  BEFOREEND: `beforeend`
+};

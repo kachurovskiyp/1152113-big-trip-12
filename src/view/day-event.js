@@ -1,4 +1,5 @@
 import {getTimeString} from "../utils/time-string.js";
+import {createElement} from "../utils/create-element.js";
 
 const getOfferList = (offers) => {
   return Array.from(offers).map((offer) => `<li class="event__offer">
@@ -8,7 +9,7 @@ const getOfferList = (offers) => {
   </li>`).join(``);
 };
 
-export const createTripDayEvent = (tripPoint) => {
+const createTripDayEvent = (tripPoint) => {
   const {type, target, price, time} = tripPoint;
 
   const timeDiff = (time.end - time.start) / 60000;
@@ -25,8 +26,7 @@ export const createTripDayEvent = (tripPoint) => {
     }
   }
 
-  return (`
-    <li class="trip-events__item">
+  return `<li class="trip-events__item">
       <div class="event">
         <div class="event__type">
           <img class="event__type-icon" width="42" height="42" src="img/icons/${type.toLowerCase() === `check` ? `check-in` : type.toLowerCase()}.png" alt="Event type icon">
@@ -55,6 +55,28 @@ export const createTripDayEvent = (tripPoint) => {
           <span class="visually-hidden">Open event</span>
         </button>
       </div>
-    </li>
-  `);
+    </li>`;
 };
+
+export default class TripDayEventView {
+  constructor(tripPoint) {
+    this._element = null;
+    this._tripPoint = tripPoint;
+  }
+
+  getTemplate() {
+    return createTripDayEvent(this._tripPoint);
+  }
+
+  getElement() {
+    if (!this._element) {
+      this._element = createElement(this.getTemplate());
+    }
+
+    return this._element;
+  }
+
+  removeElement() {
+    this._element = null;
+  }
+}
