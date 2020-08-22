@@ -1,8 +1,7 @@
 import {createElement} from "../utils/create-element.js";
 
 const createTripEventsSortControls = () => {
-  return `
-    <form class="trip-events__trip-sort  trip-sort" action="#" method="get">
+  return `<form class="trip-events__trip-sort  trip-sort" action="#" method="get">
       <span class="trip-sort__item  trip-sort__item--day">Day</span>
 
       <div class="trip-sort__item  trip-sort__item--event">
@@ -31,8 +30,7 @@ const createTripEventsSortControls = () => {
       </div>
 
       <span class="trip-sort__item  trip-sort__item--offers">Offers</span>
-    </form>
-  `;
+    </form>`;
 };
 
 export default class SortControlsView {
