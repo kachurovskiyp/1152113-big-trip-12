@@ -1,7 +1,7 @@
 import {RENDER_POSITION} from "../const.js";
 
 export const renderElement = (container, element, place) => {
-  switch(place) {
+  switch (place) {
     case RENDER_POSITION.AFTERBEGIN:
       container.prepend(element);
       break;
@@ -12,4 +12,4 @@ export const renderElement = (container, element, place) => {
       container.before(element);
       break;
   }
-}
+};

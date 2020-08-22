@@ -1,7 +1,7 @@
 import {createElement} from "../utils/create-element.js";
 
-export const createTripDayItem = () => {
-  return `
+const createTripDayItem = () => {
+  return (`
     <li class="trip-days__item  day">
       <div class="day__info">
         <span class="day__counter">1</span>
@@ -11,7 +11,7 @@ export const createTripDayItem = () => {
       <ul class="trip-events__list">
       </ul>
     </li>
-  `;
+  `);
 };
 
 export default class TripDayItem {

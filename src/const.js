@@ -56,4 +56,4 @@ export const RENDER_POSITION = {
   AFTERBEGIN: `afterbegin`,
   AFTEREND: `afterend`,
   BEFOREEND: `beforeend`
-}
+};

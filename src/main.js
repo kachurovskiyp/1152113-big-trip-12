@@ -24,12 +24,12 @@ const renderTripEvent = (tripEventsList, event) => {
   const eventEditComponent = new EventEditFormView(event);
 
   const replaceEventToEdit = () => {
-    tripEventsList.replaceChild(eventComponent.getElement(), eventEditComponent.getElement());
-  }
-
-  const replaceEditToEvent= () => {
     tripEventsList.replaceChild(eventEditComponent.getElement(), eventComponent.getElement());
-  }
+  };
+
+  const replaceEditToEvent = () => {
+    tripEventsList.replaceChild(eventComponent.getElement(), eventEditComponent.getElement());
+  };
 
   eventComponent.getElement().querySelector(`.event__rollup-btn`).addEventListener(`click`, () => {
     replaceEventToEdit();
@@ -41,7 +41,7 @@ const renderTripEvent = (tripEventsList, event) => {
   });
 
   renderElement(tripEventsList, eventComponent.getElement(), RENDER_POSITION.BEFOREEND);
-}
+};
 
 const loadData = getTripPoint(5);
 
@@ -57,6 +57,7 @@ const tripDaysContainer = tripEventsContainer.querySelector(`.trip-days`);
 renderElement(tripDaysContainer, new TripDayItem().getElement(), RENDER_POSITION.BEFOREEND);
 
 const tripEventsList = tripDaysContainer.querySelector(`.trip-events__list`);
+
 
 for (let i = 0; i < loadData.length; i++) {
   renderTripEvent(tripEventsList, loadData[i]);
