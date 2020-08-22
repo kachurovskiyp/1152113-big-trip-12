@@ -1,4 +1,6 @@
-export const createMainInfoTamplate = () => {
+import {createElement} from "../utils/create-element.js";
+
+const createMainInfoTamplate = () => {
   return (`
     <section class="trip-main__trip-info  trip-info">
       <div class="trip-info__main">
@@ -13,3 +15,25 @@ export const createMainInfoTamplate = () => {
     </section>
   `);
 };
+
+export default class MainInfoView {
+  constructor() {
+    this._element = null;
+  }
+
+  getTemplate() {
+    return createMainInfoTamplate();
+  }
+
+  getElement() {
+    if (!this._element) {
+      this._element = createElement(this.getTemplate());
+    }
+
+    return this._element;
+  }
+
+  removeElement() {
+    this._element = null;
+  }
+}
