@@ -1,5 +1,5 @@
 import {getTimeString} from "../utils/time-string.js";
-import {createElement} from "../utils/create-element.js";
+import Abstract from "./abstract.js";
 
 const getEventEditForm = (tripPoint) => {
   const {type, target, price, time} = tripPoint;
@@ -182,9 +182,9 @@ const getEventEditForm = (tripPoint) => {
   </li>`;
 };
 
-export default class EventEditFormView {
+export default class EventEditFormView extends Abstract {
   constructor(tripPoint) {
-    this._element = null;
+    super();
     this._tripPoint = tripPoint;
   }
 
@@ -192,15 +192,8 @@ export default class EventEditFormView {
     return getEventEditForm(this._tripPoint);
   }
 
-  getElement() {
-    if (!this._element) {
-      this._element = createElement(this.getTemplate());
-    }
-
-    return this._element;
-  }
-
-  removeElement() {
-    this._element = null;
+  setFormSubmitHandler(callback) {
+    this._callback = callback;
+    this.getElement().querySelector(`form`).addEventListener(`submit`, this._callback);
   }
 }

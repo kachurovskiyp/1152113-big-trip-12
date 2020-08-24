@@ -1,5 +1,5 @@
 import {getTimeString} from "../utils/time-string.js";
-import {createElement} from "../utils/create-element.js";
+import Abstract from "./abstract.js";
 
 const getOfferList = (offers) => {
   return Array.from(offers).map((offer) => `<li class="event__offer">
@@ -58,25 +58,19 @@ const createTripDayEvent = (tripPoint) => {
     </li>`;
 };
 
-export default class TripDayEventView {
+export default class TripDayEventView extends Abstract {
   constructor(tripPoint) {
-    this._element = null;
+    super();
     this._tripPoint = tripPoint;
+
   }
 
   getTemplate() {
     return createTripDayEvent(this._tripPoint);
   }
 
-  getElement() {
-    if (!this._element) {
-      this._element = createElement(this.getTemplate());
-    }
-
-    return this._element;
-  }
-
-  removeElement() {
-    this._element = null;
+  setRollupButtonClickHandler(callback) {
+    this._callback = callback;
+    this.getElement().querySelector(`.event__rollup-btn`).addEventListener(`click`, this._callback);
   }
 }
