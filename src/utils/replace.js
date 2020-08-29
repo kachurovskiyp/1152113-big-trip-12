@@ -1,4 +1,4 @@
-import Abstract from "../view/abstract"
+import Abstract from "../view/abstract";
 
 export const replace = (newChild, oldChild) => {
   if (newChild instanceof Abstract) {
@@ -16,4 +16,4 @@ export const replace = (newChild, oldChild) => {
   }
 
   parent.replaceChild(newChild, oldChild);
-}
+};

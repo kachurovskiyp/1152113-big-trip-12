@@ -12,12 +12,12 @@ import TripDayEventView from "../view/day-event.js";
 import EventEditFormView from "../view/event-edit";
 
 const pageHeaderElement = document.querySelector(`.page-header`);
-    const headerMainInfoContainer = pageHeaderElement.querySelector(`.trip-main`);
-    const tripControlsContainer = pageHeaderElement.querySelector(`.trip-main__trip-controls`);
-    const tripViewControlsTitles = tripControlsContainer.querySelectorAll(`h2`);
+const headerMainInfoContainer = pageHeaderElement.querySelector(`.trip-main`);
+const tripControlsContainer = pageHeaderElement.querySelector(`.trip-main__trip-controls`);
+const tripViewControlsTitles = tripControlsContainer.querySelectorAll(`h2`);
 
-    const tripMainElement = document.querySelector(`.page-body__page-main`);
-    const tripEventsContainer = tripMainElement.querySelector(`.trip-events`);
+const tripMainElement = document.querySelector(`.page-body__page-main`);
+const tripEventsContainer = tripMainElement.querySelector(`.trip-events`);
 
 export default class TripPresenter {
   constructor(loadData) {
@@ -56,25 +56,25 @@ export default class TripPresenter {
     renderElement(this._tripDaysContainer, this._tripDayItem.getElement(), RENDER_POSITION.BEFOREEND);
   }
 
-  _renderTripEvent(tripEventsList, event)  {
-    this._tripDayEventView = new TripDayEventView(event);
-    this._eventEditFormView = new EventEditFormView(event);
+  _renderTripEvent(tripEventsList, event) {
+    const tripDayEventView = new TripDayEventView(event);
+    const eventEditFormView = new EventEditFormView(event);
 
     const replaceEditToEvent = () => {
-      replace(this._tripDayEventView, this._eventEditFormView);
+      replace(tripDayEventView, eventEditFormView);
     };
 
-    this._tripDayEventView.setRollupButtonClickHandler(() => {
-      replace(this._eventEditFormView, this._tripDayEventView);
+    tripDayEventView.setRollupButtonClickHandler(() => {
+      replace(eventEditFormView, tripDayEventView);
     });
 
-    this._eventEditFormView.setFormSubmitHandler((evt) => {
+    eventEditFormView.setFormSubmitHandler((evt) => {
       evt.preventDefault();
       replaceEditToEvent();
     });
 
-    renderElement(tripEventsList, this._tripDayEventView.getElement(), RENDER_POSITION.BEFOREEND);
-  };
+    renderElement(tripEventsList, tripDayEventView.getElement(), RENDER_POSITION.BEFOREEND);
+  }
 
   init() {
     this._renderMainInfoView();
@@ -82,8 +82,6 @@ export default class TripPresenter {
     this._renderTripFilterView();
     this._renderSortControlsView();
     this._renderDaysContainerView();
-
-
 
     this._renderTripDayItem();
 
